@@ -3,10 +3,10 @@ public class Cliente
 {
     private Cliente() { }
     public Cliente(
-        int id, 
-        string? nome, 
-        string? endereco, 
-        string? telefone, 
+        int id,
+        string? nome,
+        string? endereco,
+        string? telefone,
         string? email)
     {
         Id = id;

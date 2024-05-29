@@ -1,15 +1,6 @@
 ﻿using ControleVendas.model;
 using ControleVendas.repositorio;
 using ControleVendas.utilitarios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ControleVendas.formularios.cadastros;
 public partial class frmCadastroClientes : Form
@@ -78,7 +69,7 @@ public partial class frmCadastroClientes : Form
         txtTelefone.Text = string.Empty;
     }
 
-    private void btnEditar_Click(object sender, EventArgs e)
+    private void btnCadastroClienteEditar_Click(object sender, EventArgs e)
     {
         if (txtCodigo.Text == string.Empty)
         {
@@ -89,7 +80,7 @@ public partial class frmCadastroClientes : Form
         tabClientes.SelectedIndex = 1;
     }
 
-    private void btnSalvar_Click(object sender, EventArgs e)
+    private void btnCadastroClienteSalvar_Click(object sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(txtNome.Text.Trim()) ||
             string.IsNullOrEmpty(txtNome.Text.Trim()))
@@ -179,14 +170,14 @@ public partial class frmCadastroClientes : Form
         txtTelefone.Text = cliente.Telefone;
     }
 
-    private void btnCancelar_Click(object sender, EventArgs e)
+    private void btnCadastroClienteCancelar_Click(object sender, EventArgs e)
     {
         LimparCamposCadastro();
 
         tabClientes.SelectedIndex = 0;
     }
 
-    private void btnNovo_Click(object sender, EventArgs e)
+    private void btnCadastroClienteNovo_Click(object sender, EventArgs e)
     {
         LimparCamposCadastro();
 
@@ -195,7 +186,7 @@ public partial class frmCadastroClientes : Form
         txtNome.Focus();
     }
 
-    private void btnExcluir_Click(object sender, EventArgs e)
+    private void btnCadastroClienteExcluir_Click(object sender, EventArgs e)
     {
         if (txtCodigo.Text == string.Empty)
         {
@@ -223,7 +214,7 @@ public partial class frmCadastroClientes : Form
         }
     }
 
-    private void btnSair_Click(object sender, EventArgs e)
+    private void btnCadastroClienteSair_Click(object sender, EventArgs e)
     {
         LimparCamposCadastro();
         this.Close();

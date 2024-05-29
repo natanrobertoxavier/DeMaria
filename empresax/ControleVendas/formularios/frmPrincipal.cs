@@ -17,4 +17,11 @@ public partial class frmPrincipal : Form
         frmCadastroClientes formCadastro = new frmCadastroClientes();
         formCadastro.ShowDialog();
     }
+
+    private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        // Instancia o formulário de cadastro e o exibe de forma modal
+        frmCadastroProdutos formCadastro = new frmCadastroProdutos();
+        formCadastro.ShowDialog();
+    }
 }

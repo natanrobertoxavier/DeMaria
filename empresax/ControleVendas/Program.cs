@@ -1,5 +1,3 @@
-using ControleVendas.formularios.cadastros;
-
 namespace ControleVendas;
 
 internal static class Program

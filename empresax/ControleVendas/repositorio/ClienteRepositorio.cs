@@ -1,14 +1,13 @@
 ﻿using ControleVendas.model;
 using Dapper;
 using Npgsql;
-using System.Globalization;
 
 namespace ControleVendas.repositorio;
 public class ClienteRepositorio
 {
     public void Cadastrar(Cliente cliente)
     {
-        using NpgsqlConnection conexao = (NpgsqlConnection) new DbContext().GetConnection();
+        using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         conexao.Execute(@"INSERT INTO CLIENTES (NOME,  ENDERECO,  TELEFONE,  EMAIL)
                                         VALUES (@nome, @endereco, @telefone, @email);",
                 new
@@ -23,7 +22,7 @@ public class ClienteRepositorio
 
     public void Atualizar(Cliente cliente)
     {
-        using NpgsqlConnection conexao = (NpgsqlConnection) new DbContext().GetConnection();
+        using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         conexao.Execute(@"UPDATE CLIENTES SET NOME     = @nome,  
                                               ENDERECO = @endereco,  
                                               TELEFONE = @telefone,
@@ -42,7 +41,7 @@ public class ClienteRepositorio
 
     public void Apagar(int id)
     {
-        using NpgsqlConnection conexao = (NpgsqlConnection) new DbContext().GetConnection();
+        using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         conexao.Execute(@"DELETE FROM CLIENTES WHERE ID = @id;",
                 new
                 {

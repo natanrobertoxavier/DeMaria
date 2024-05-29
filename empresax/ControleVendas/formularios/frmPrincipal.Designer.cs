@@ -64,13 +64,14 @@ partial class frmPrincipal
         clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
         clienteToolStripMenuItem.Size = new Size(180, 22);
         clienteToolStripMenuItem.Text = "Clientes";
-        clienteToolStripMenuItem.Click += this.clienteToolStripMenuItem_Click;
+        clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
         // 
         // produtosToolStripMenuItem
         // 
         produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
         produtosToolStripMenuItem.Size = new Size(180, 22);
         produtosToolStripMenuItem.Text = "Produtos";
+        produtosToolStripMenuItem.Click += this.produtosToolStripMenuItem_Click;
         // 
         // frmPrincipal
         // 
