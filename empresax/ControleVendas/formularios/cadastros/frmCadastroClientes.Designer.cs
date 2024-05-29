@@ -37,6 +37,7 @@ partial class frmCadastroClientes
         btnExcluir = new Button();
         btnEditar = new Button();
         tabCampos = new TabPage();
+        txtTelefone = new MaskedTextBox();
         panel2 = new Panel();
         btnCancelar = new Button();
         btnSalvar = new Button();
@@ -44,7 +45,6 @@ partial class frmCadastroClientes
         label5 = new Label();
         txtEndereco = new TextBox();
         label4 = new Label();
-        txtTelefone = new TextBox();
         label3 = new Label();
         txtNome = new TextBox();
         label2 = new Label();
@@ -120,6 +120,7 @@ partial class frmCadastroClientes
         btnSair.TabIndex = 4;
         btnSair.Text = "Sair";
         btnSair.UseVisualStyleBackColor = true;
+        btnSair.Click += btnSair_Click;
         // 
         // btnExcluir
         // 
@@ -143,12 +144,12 @@ partial class frmCadastroClientes
         // 
         // tabCampos
         // 
+        tabCampos.Controls.Add(txtTelefone);
         tabCampos.Controls.Add(panel2);
         tabCampos.Controls.Add(txtEmail);
         tabCampos.Controls.Add(label5);
         tabCampos.Controls.Add(txtEndereco);
         tabCampos.Controls.Add(label4);
-        tabCampos.Controls.Add(txtTelefone);
         tabCampos.Controls.Add(label3);
         tabCampos.Controls.Add(txtNome);
         tabCampos.Controls.Add(label2);
@@ -161,6 +162,15 @@ partial class frmCadastroClientes
         tabCampos.TabIndex = 1;
         tabCampos.Text = "Dados";
         tabCampos.UseVisualStyleBackColor = true;
+        // 
+        // txtTelefone
+        // 
+        txtTelefone.Location = new Point(10, 118);
+        txtTelefone.Mask = "(99) 0 0000-0000";
+        txtTelefone.Name = "txtTelefone";
+        txtTelefone.Size = new Size(110, 23);
+        txtTelefone.TabIndex = 2;
+        txtTelefone.Leave += txtTelefone_Leave;
         // 
         // panel2
         // 
@@ -198,6 +208,7 @@ partial class frmCadastroClientes
         txtEmail.Name = "txtEmail";
         txtEmail.Size = new Size(247, 23);
         txtEmail.TabIndex = 3;
+        txtEmail.TextChanged += txtEmail_TextChanged;
         // 
         // label5
         // 
@@ -214,6 +225,7 @@ partial class frmCadastroClientes
         txtEndereco.Name = "txtEndereco";
         txtEndereco.Size = new Size(399, 23);
         txtEndereco.TabIndex = 4;
+        txtEndereco.TextChanged += txtEndereco_TextChanged;
         // 
         // label4
         // 
@@ -223,13 +235,6 @@ partial class frmCadastroClientes
         label4.Size = new Size(56, 15);
         label4.TabIndex = 6;
         label4.Text = "Endereço";
-        // 
-        // txtTelefone
-        // 
-        txtTelefone.Location = new Point(10, 118);
-        txtTelefone.Name = "txtTelefone";
-        txtTelefone.Size = new Size(110, 23);
-        txtTelefone.TabIndex = 2;
         // 
         // label3
         // 
@@ -246,6 +251,7 @@ partial class frmCadastroClientes
         txtNome.Name = "txtNome";
         txtNome.Size = new Size(399, 23);
         txtNome.TabIndex = 1;
+        txtNome.TextChanged += txtNome_TextChanged;
         // 
         // label2
         // 
@@ -305,7 +311,6 @@ partial class frmCadastroClientes
     private Label label5;
     private TextBox txtEndereco;
     private Label label4;
-    private TextBox txtTelefone;
     private Label label3;
     private TextBox txtNome;
     private Label label2;
@@ -318,4 +323,5 @@ partial class frmCadastroClientes
     private Button btnExcluir;
     private Button btnSair;
     private Button btnNovo;
+    private MaskedTextBox txtTelefone;
 }

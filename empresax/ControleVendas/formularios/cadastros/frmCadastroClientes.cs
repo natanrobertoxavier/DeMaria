@@ -1,5 +1,6 @@
 ﻿using ControleVendas.model;
 using ControleVendas.repositorio;
+using ControleVendas.utilitarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ public partial class frmCadastroClientes : Form
     public frmCadastroClientes()
     {
         InitializeComponent();
+        this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        this.MaximizeBox = false;
     }
 
     private void BuscarTodosClientes(ClienteRepositorio repositorio)
@@ -47,7 +50,7 @@ public partial class frmCadastroClientes : Form
             DataPropertyName = "NOME",
             Name = "NOME",
             HeaderText = "Nome",
-            Width = 265,
+            Width = 255,
             ReadOnly = true,
         };
         dgClientes.Columns.Add(nome);
@@ -59,7 +62,7 @@ public partial class frmCadastroClientes : Form
             DataPropertyName = "TELEFONE",
             Name = "TELEFONE",
             HeaderText = "Telefone",
-            Width = 90,
+            Width = 100,
             ReadOnly = true,
         };
         dgClientes.Columns.Add(telefone);
@@ -91,9 +94,9 @@ public partial class frmCadastroClientes : Form
         if (string.IsNullOrWhiteSpace(txtNome.Text.Trim()) ||
             string.IsNullOrEmpty(txtNome.Text.Trim()))
         {
-            MessageBox.Show("O nome do cliente é obrigatório!", 
-                "Operação inválida", 
-                MessageBoxButtons.OK, 
+            MessageBox.Show("O nome do cliente é obrigatório!",
+                "Operação inválida",
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Error
             );
             txtNome.Focus();
@@ -103,12 +106,19 @@ public partial class frmCadastroClientes : Form
         if (string.IsNullOrWhiteSpace(txtEndereco.Text.Trim()) ||
             string.IsNullOrEmpty(txtEndereco.Text.Trim()))
         {
-            MessageBox.Show("O endereço do cliente é obrigatório!", 
-                "Operação inválida", 
-                MessageBoxButtons.OK, 
+            MessageBox.Show("O endereço do cliente é obrigatório!",
+                "Operação inválida",
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Error
             );
             txtEndereco.Focus();
+            return;
+        }
+
+        if (!Utilitarios.ValidarTelefone(txtTelefone.Text))
+        {
+            MessageBox.Show("O telefone deve conter 11 dígitos!");
+            txtTelefone.Focus();
             return;
         }
 
@@ -122,7 +132,17 @@ public partial class frmCadastroClientes : Form
 
         var repositorio = new ClienteRepositorio();
 
-        repositorio.Cadastrar(cliente);
+        if (string.IsNullOrWhiteSpace(txtCodigo.Text.Trim()) ||
+            string.IsNullOrEmpty(txtCodigo.Text.Trim()))
+        {
+            repositorio.Cadastrar(cliente);
+        }
+        else
+        {
+            cliente.Id = int.TryParse(txtCodigo.Text, out int _id) ? _id : 0;
+            repositorio.Atualizar(cliente);
+            tabClientes.SelectedIndex = 0;
+        }
 
         LimparCamposCadastro();
 
@@ -183,9 +203,9 @@ public partial class frmCadastroClientes : Form
             return;
         }
 
-        DialogResult resultado = MessageBox.Show("Deseja realmente excluir o cliente?", 
-            "Confirmação", 
-            MessageBoxButtons.YesNo, 
+        DialogResult resultado = MessageBox.Show("Deseja realmente excluir o cliente?",
+            "Confirmação",
+            MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning);
 
         if (resultado == DialogResult.Yes)
@@ -199,6 +219,37 @@ public partial class frmCadastroClientes : Form
             repositorio.Apagar(id);
 
             BuscarTodosClientes(repositorio);
+            LimparCamposCadastro();
         }
+    }
+
+    private void btnSair_Click(object sender, EventArgs e)
+    {
+        LimparCamposCadastro();
+        this.Close();
+    }
+
+    private void txtTelefone_Leave(object sender, EventArgs e)
+    {
+        if (!Utilitarios.ValidarTelefone(txtTelefone.Text))
+        {
+            MessageBox.Show("O telefone deve conter 11 dígitos!");
+            txtTelefone.Focus();
+        }
+    }
+
+    private void txtNome_TextChanged(object sender, EventArgs e)
+    {
+        Utilitarios.ConverterParaMaiusculas(txtNome);
+    }
+
+    private void txtEmail_TextChanged(object sender, EventArgs e)
+    {
+        Utilitarios.ConverterParaMaiusculas(txtEmail);
+    }
+
+    private void txtEndereco_TextChanged(object sender, EventArgs e)
+    {
+        Utilitarios.ConverterParaMaiusculas(txtEndereco);
     }
 }

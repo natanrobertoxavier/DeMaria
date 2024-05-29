@@ -62,6 +62,6 @@ public class ClienteRepositorio
     {
         using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         return conexao.Query<Cliente>
-            (@"SELECT ID, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES");
+            (@"SELECT ID, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES ORDER BY ID ASC");
     }
 }

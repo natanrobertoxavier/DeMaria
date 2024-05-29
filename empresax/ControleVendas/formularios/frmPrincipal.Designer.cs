@@ -64,6 +64,7 @@ partial class frmPrincipal
         clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
         clienteToolStripMenuItem.Size = new Size(180, 22);
         clienteToolStripMenuItem.Text = "Clientes";
+        clienteToolStripMenuItem.Click += this.clienteToolStripMenuItem_Click;
         // 
         // produtosToolStripMenuItem
         // 
