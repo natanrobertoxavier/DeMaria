@@ -56,7 +56,6 @@ public partial class frmCadastroProdutos : Form
         dgProdutos.Columns.Add(preco);
 
         preco.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
         #endregion
     }
 
@@ -204,9 +203,9 @@ public partial class frmCadastroProdutos : Form
 
         LimparCamposCadastro();
 
-        var codigoBarras = gridroduto.CurrentRow.Cells["CODIGODEBARRAS"]?.Value?.ToString();
+        var codigoDeBarras = gridroduto.CurrentRow.Cells["CODIGODEBARRAS"]?.Value?.ToString();
 
-        var produto = repositorio.BuscarProdutoPorCodigoDeBarras(codigoBarras);
+        var produto = repositorio.BuscarProdutoPorCodigoDeBarras(codigoDeBarras);
 
         txtCodigo.Text = produto.Id.ToString();
         txtNome.Text = produto.Nome;

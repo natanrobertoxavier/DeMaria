@@ -90,7 +90,9 @@ public partial class frmCadastroClientes : Form
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error
             );
+
             txtNome.Focus();
+
             return;
         }
 
@@ -102,14 +104,18 @@ public partial class frmCadastroClientes : Form
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error
             );
+
             txtEndereco.Focus();
+
             return;
         }
 
         if (!Utilitarios.ValidarTelefone(txtTelefone.Text))
         {
             MessageBox.Show("O telefone deve conter 11 dígitos!");
+
             txtTelefone.Focus();
+
             return;
         }
 
