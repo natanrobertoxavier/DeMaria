@@ -50,6 +50,33 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
         }
       },
+      "Microsoft.ReportViewer.Windows/11.0.3452": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.SqlServer.Types": "11.0.2"
+        },
+        "compile": {
+          "lib/net40/Microsoft.ReportViewer.Common.dll": {},
+          "lib/net40/Microsoft.ReportViewer.DataVisualization.DLL": {},
+          "lib/net40/Microsoft.ReportViewer.ProcessingObjectModel.DLL": {},
+          "lib/net40/Microsoft.ReportViewer.WinForms.DLL": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.ReportViewer.Common.dll": {},
+          "lib/net40/Microsoft.ReportViewer.DataVisualization.DLL": {},
+          "lib/net40/Microsoft.ReportViewer.ProcessingObjectModel.DLL": {},
+          "lib/net40/Microsoft.ReportViewer.WinForms.DLL": {}
+        }
+      },
+      "Microsoft.SqlServer.Types/11.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {}
+        }
+      },
       "Npgsql/8.0.3": {
         "type": "package",
         "dependencies": {
@@ -195,6 +222,45 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.ReportViewer.Windows/11.0.3452": {
+      "sha512": "vK/GE+Fk5pmJfHMjL3D7XLRUuAvHRp85r5d4WtCPXRMtD5w2DfLuxmUClt/bpBwMQPnZMrkpzLIWBITIaniO3w==",
+      "type": "package",
+      "path": "microsoft.reportviewer.windows/11.0.3452",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NuGet.Config",
+        "NuGet.exe",
+        "NuGet.targets",
+        "lib/net40/Microsoft.ReportViewer.Common.dll",
+        "lib/net40/Microsoft.ReportViewer.DataVisualization.DLL",
+        "lib/net40/Microsoft.ReportViewer.ProcessingObjectModel.DLL",
+        "lib/net40/Microsoft.ReportViewer.WinForms.DLL",
+        "microsoft.reportviewer.windows.11.0.3452.nupkg.sha512",
+        "microsoft.reportviewer.windows.nuspec"
+      ]
+    },
+    "Microsoft.SqlServer.Types/11.0.2": {
+      "sha512": "tusOUD4s/zkjRs25wD2TrzClQeSgQvvz5YSsG3bEbiogXm7+H5I6PBUy1RixWyLzlZpn3kxrLGyoId5+no9g0w==",
+      "type": "package",
+      "path": "microsoft.sqlserver.types/11.0.2",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/SqlServerTypes/Loader.cs",
+        "content/SqlServerTypes/readme.htm",
+        "lib/net20/Microsoft.SqlServer.Types.dll",
+        "microsoft.sqlserver.types.11.0.2.nupkg.sha512",
+        "microsoft.sqlserver.types.nuspec",
+        "nativeBinaries/x64/SqlServerSpatial110.dll",
+        "nativeBinaries/x64/msvcr100.dll",
+        "nativeBinaries/x86/SqlServerSpatial110.dll",
+        "nativeBinaries/x86/msvcr100.dll",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
     "Npgsql/8.0.3": {
       "sha512": "6WEmzsQJCZAlUG1pThKg/RmeF6V+I0DmBBBE/8YzpRtEzhyZzKcK7ulMANDm5CkxrALBEC8H+5plxHWtIL7xnA==",
       "type": "package",
@@ -222,6 +288,7 @@
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
       "Dapper >= 2.1.35",
+      "Microsoft.ReportViewer.Windows >= 11.0.3452",
       "Npgsql >= 8.0.3"
     ]
   },
@@ -279,6 +346,10 @@
             "target": "Package",
             "version": "[2.1.35, )"
           },
+          "Microsoft.ReportViewer.Windows": {
+            "target": "Package",
+            "version": "[11.0.3452, )"
+          },
           "Npgsql": {
             "target": "Package",
             "version": "[8.0.3, )"
@@ -306,5 +377,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.ReportViewer.Windows 11.0.3452' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.ReportViewer.Windows",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.SqlServer.Types 11.0.2' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.SqlServer.Types",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }

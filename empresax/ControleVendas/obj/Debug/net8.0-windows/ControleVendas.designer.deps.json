@@ -33,6 +33,37 @@
           }
         }
       },
+      "Microsoft.ReportViewer.Windows/11.0.3452": {
+        "dependencies": {
+          "Microsoft.SqlServer.Types": "11.0.2"
+        },
+        "runtime": {
+          "lib/net40/Microsoft.ReportViewer.Common.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.3452.0"
+          },
+          "lib/net40/Microsoft.ReportViewer.DataVisualization.DLL": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.3452.0"
+          },
+          "lib/net40/Microsoft.ReportViewer.ProcessingObjectModel.DLL": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.3452.0"
+          },
+          "lib/net40/Microsoft.ReportViewer.WinForms.DLL": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.3452.0"
+          }
+        }
+      },
+      "Microsoft.SqlServer.Types/11.0.2": {
+        "runtime": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "2011.110.3366.16"
+          }
+        }
+      },
       "Npgsql/8.0.3": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0"
@@ -67,6 +98,20 @@
       "sha512": "sha512-arDBqTgFCyS0EvRV7O3MZturChstm50OJ0y9bDJvAcmEPJm0FFpFyjU/JLYyStNGGey081DvnQYlncNX5SJJGA==",
       "path": "microsoft.extensions.logging.abstractions/8.0.0",
       "hashPath": "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.ReportViewer.Windows/11.0.3452": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vK/GE+Fk5pmJfHMjL3D7XLRUuAvHRp85r5d4WtCPXRMtD5w2DfLuxmUClt/bpBwMQPnZMrkpzLIWBITIaniO3w==",
+      "path": "microsoft.reportviewer.windows/11.0.3452",
+      "hashPath": "microsoft.reportviewer.windows.11.0.3452.nupkg.sha512"
+    },
+    "Microsoft.SqlServer.Types/11.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tusOUD4s/zkjRs25wD2TrzClQeSgQvvz5YSsG3bEbiogXm7+H5I6PBUy1RixWyLzlZpn3kxrLGyoId5+no9g0w==",
+      "path": "microsoft.sqlserver.types/11.0.2",
+      "hashPath": "microsoft.sqlserver.types.11.0.2.nupkg.sha512"
     },
     "Npgsql/8.0.3": {
       "type": "package",

@@ -28,61 +28,64 @@ partial class frmCadastroProdutos
     /// </summary>
     private void InitializeComponent()
     {
-        tabClientes = new TabControl();
+        tabProdutos = new TabControl();
         tabConsulta = new TabPage();
         panel3 = new Panel();
-        button1 = new Button();
-        button2 = new Button();
-        button3 = new Button();
-        button4 = new Button();
-        dgClientes = new DataGridView();
+        btnCadastroProdutoNovo = new Button();
+        btnCadastroProdutoSair = new Button();
+        btnCadastroProdutoExcluir = new Button();
+        txtCadastroProdutoEditar = new Button();
+        dgProdutos = new DataGridView();
         panel1 = new Panel();
         btnNovo = new Button();
         btnSair = new Button();
         btnExcluir = new Button();
         btnEditar = new Button();
         tabCampos = new TabPage();
+        txtCodigoDeBarras = new TextBox();
+        label6 = new Label();
+        txtPreco = new TextBox();
+        label4 = new Label();
+        txtDescricao = new TextBox();
         panel4 = new Panel();
-        button5 = new Button();
-        button6 = new Button();
-        txtTelefone = new MaskedTextBox();
+        btnCadastroProdutoCancelar = new Button();
+        btnCadastroProdutoSalvar = new Button();
         panel2 = new Panel();
         btnCancelar = new Button();
         btnSalvar = new Button();
-        txtEmail = new TextBox();
+        txtEstoque = new TextBox();
         label5 = new Label();
-        txtEndereco = new TextBox();
-        label4 = new Label();
         label3 = new Label();
         txtNome = new TextBox();
         label2 = new Label();
         txtCodigo = new TextBox();
         label1 = new Label();
-        tabClientes.SuspendLayout();
+        tabProdutos.SuspendLayout();
         tabConsulta.SuspendLayout();
         panel3.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)dgClientes).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)dgProdutos).BeginInit();
         panel1.SuspendLayout();
         tabCampos.SuspendLayout();
         panel4.SuspendLayout();
         panel2.SuspendLayout();
         SuspendLayout();
         // 
-        // tabClientes
+        // tabProdutos
         // 
-        tabClientes.Controls.Add(tabConsulta);
-        tabClientes.Controls.Add(tabCampos);
-        tabClientes.Location = new Point(0, 1);
-        tabClientes.Name = "tabClientes";
-        tabClientes.SelectedIndex = 0;
-        tabClientes.Size = new Size(472, 306);
-        tabClientes.TabIndex = 1;
+        tabProdutos.Controls.Add(tabConsulta);
+        tabProdutos.Controls.Add(tabCampos);
+        tabProdutos.Location = new Point(0, 1);
+        tabProdutos.Name = "tabProdutos";
+        tabProdutos.SelectedIndex = 0;
+        tabProdutos.Size = new Size(472, 306);
+        tabProdutos.TabIndex = 1;
+        tabProdutos.SelectedIndexChanged += tabProdutos_SelectedIndexChanged;
         // 
         // tabConsulta
         // 
         tabConsulta.AutoScroll = true;
         tabConsulta.Controls.Add(panel3);
-        tabConsulta.Controls.Add(dgClientes);
+        tabConsulta.Controls.Add(dgProdutos);
         tabConsulta.Controls.Add(panel1);
         tabConsulta.Location = new Point(4, 24);
         tabConsulta.Name = "tabConsulta";
@@ -95,58 +98,63 @@ partial class frmCadastroProdutos
         // panel3
         // 
         panel3.Anchor = AnchorStyles.Bottom;
-        panel3.Controls.Add(button1);
-        panel3.Controls.Add(button2);
-        panel3.Controls.Add(button3);
-        panel3.Controls.Add(button4);
+        panel3.Controls.Add(btnCadastroProdutoNovo);
+        panel3.Controls.Add(btnCadastroProdutoSair);
+        panel3.Controls.Add(btnCadastroProdutoExcluir);
+        panel3.Controls.Add(txtCadastroProdutoEditar);
         panel3.Location = new Point(3, 210);
         panel3.Name = "panel3";
         panel3.Size = new Size(459, 65);
         panel3.TabIndex = 2;
         // 
-        // button1
+        // btnCadastroProdutoNovo
         // 
-        button1.Location = new Point(96, 10);
-        button1.Name = "button1";
-        button1.Size = new Size(85, 45);
-        button1.TabIndex = 1;
-        button1.Text = "Novo";
-        button1.UseVisualStyleBackColor = true;
+        btnCadastroProdutoNovo.Location = new Point(96, 10);
+        btnCadastroProdutoNovo.Name = "btnCadastroProdutoNovo";
+        btnCadastroProdutoNovo.Size = new Size(85, 45);
+        btnCadastroProdutoNovo.TabIndex = 1;
+        btnCadastroProdutoNovo.Text = "Novo";
+        btnCadastroProdutoNovo.UseVisualStyleBackColor = true;
+        btnCadastroProdutoNovo.Click += btnCadastroProdutoNovo_Click;
         // 
-        // button2
+        // btnCadastroProdutoSair
         // 
-        button2.Location = new Point(368, 10);
-        button2.Name = "button2";
-        button2.Size = new Size(85, 45);
-        button2.TabIndex = 4;
-        button2.Text = "Sair";
-        button2.UseVisualStyleBackColor = true;
+        btnCadastroProdutoSair.Location = new Point(368, 10);
+        btnCadastroProdutoSair.Name = "btnCadastroProdutoSair";
+        btnCadastroProdutoSair.Size = new Size(85, 45);
+        btnCadastroProdutoSair.TabIndex = 4;
+        btnCadastroProdutoSair.Text = "Sair";
+        btnCadastroProdutoSair.UseVisualStyleBackColor = true;
+        btnCadastroProdutoSair.Click += btnCadastroProdutoSair_Click;
         // 
-        // button3
+        // btnCadastroProdutoExcluir
         // 
-        button3.Location = new Point(278, 10);
-        button3.Name = "button3";
-        button3.Size = new Size(85, 45);
-        button3.TabIndex = 3;
-        button3.Text = "Excluir";
-        button3.UseVisualStyleBackColor = true;
+        btnCadastroProdutoExcluir.Location = new Point(278, 10);
+        btnCadastroProdutoExcluir.Name = "btnCadastroProdutoExcluir";
+        btnCadastroProdutoExcluir.Size = new Size(85, 45);
+        btnCadastroProdutoExcluir.TabIndex = 3;
+        btnCadastroProdutoExcluir.Text = "Excluir";
+        btnCadastroProdutoExcluir.UseVisualStyleBackColor = true;
+        btnCadastroProdutoExcluir.Click += btnCadastroProdutoExcluir_Click;
         // 
-        // button4
+        // txtCadastroProdutoEditar
         // 
-        button4.Location = new Point(187, 10);
-        button4.Name = "button4";
-        button4.Size = new Size(85, 45);
-        button4.TabIndex = 2;
-        button4.Text = "Editar";
-        button4.UseVisualStyleBackColor = true;
+        txtCadastroProdutoEditar.Location = new Point(187, 10);
+        txtCadastroProdutoEditar.Name = "txtCadastroProdutoEditar";
+        txtCadastroProdutoEditar.Size = new Size(85, 45);
+        txtCadastroProdutoEditar.TabIndex = 2;
+        txtCadastroProdutoEditar.Text = "Editar";
+        txtCadastroProdutoEditar.UseVisualStyleBackColor = true;
+        txtCadastroProdutoEditar.Click += txtCadastroProdutoEditar_Click;
         // 
-        // dgClientes
+        // dgProdutos
         // 
-        dgClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        dgClientes.Location = new Point(0, 0);
-        dgClientes.Name = "dgClientes";
-        dgClientes.Size = new Size(461, 211);
-        dgClientes.TabIndex = 1;
+        dgProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dgProdutos.Location = new Point(0, 0);
+        dgProdutos.Name = "dgProdutos";
+        dgProdutos.Size = new Size(461, 211);
+        dgProdutos.TabIndex = 1;
+        dgProdutos.CellClick += dgProdutos_CellClick;
         // 
         // panel1
         // 
@@ -198,13 +206,15 @@ partial class frmCadastroProdutos
         // 
         // tabCampos
         // 
-        tabCampos.Controls.Add(panel4);
-        tabCampos.Controls.Add(txtTelefone);
-        tabCampos.Controls.Add(panel2);
-        tabCampos.Controls.Add(txtEmail);
-        tabCampos.Controls.Add(label5);
-        tabCampos.Controls.Add(txtEndereco);
+        tabCampos.Controls.Add(txtCodigoDeBarras);
+        tabCampos.Controls.Add(label6);
+        tabCampos.Controls.Add(txtPreco);
         tabCampos.Controls.Add(label4);
+        tabCampos.Controls.Add(txtDescricao);
+        tabCampos.Controls.Add(panel4);
+        tabCampos.Controls.Add(panel2);
+        tabCampos.Controls.Add(txtEstoque);
+        tabCampos.Controls.Add(label5);
         tabCampos.Controls.Add(label3);
         tabCampos.Controls.Add(txtNome);
         tabCampos.Controls.Add(label2);
@@ -218,41 +228,77 @@ partial class frmCadastroProdutos
         tabCampos.Text = "Dados";
         tabCampos.UseVisualStyleBackColor = true;
         // 
+        // txtCodigoDeBarras
+        // 
+        txtCodigoDeBarras.Location = new Point(98, 26);
+        txtCodigoDeBarras.Name = "txtCodigoDeBarras";
+        txtCodigoDeBarras.Size = new Size(139, 23);
+        txtCodigoDeBarras.TabIndex = 1;
+        txtCodigoDeBarras.TextAlign = HorizontalAlignment.Right;
+        // 
+        // label6
+        // 
+        label6.AutoSize = true;
+        label6.Location = new Point(101, 11);
+        label6.Name = "label6";
+        label6.Size = new Size(97, 15);
+        label6.TabIndex = 15;
+        label6.Text = "Código de Barras";
+        // 
+        // txtPreco
+        // 
+        txtPreco.Location = new Point(10, 168);
+        txtPreco.Name = "txtPreco";
+        txtPreco.Size = new Size(138, 23);
+        txtPreco.TabIndex = 4;
+        txtPreco.KeyPress += txtPreco_KeyPress;
+        // 
+        // label4
+        // 
+        label4.AutoSize = true;
+        label4.Location = new Point(178, 150);
+        label4.Name = "label4";
+        label4.Size = new Size(80, 15);
+        label4.TabIndex = 13;
+        label4.Text = "Estoque Atual";
+        // 
+        // txtDescricao
+        // 
+        txtDescricao.Location = new Point(10, 118);
+        txtDescricao.Name = "txtDescricao";
+        txtDescricao.Size = new Size(396, 23);
+        txtDescricao.TabIndex = 3;
+        txtDescricao.TextChanged += txtDescricao_TextChanged;
+        // 
         // panel4
         // 
         panel4.Anchor = AnchorStyles.Bottom;
-        panel4.Controls.Add(button5);
-        panel4.Controls.Add(button6);
+        panel4.Controls.Add(btnCadastroProdutoCancelar);
+        panel4.Controls.Add(btnCadastroProdutoSalvar);
         panel4.Location = new Point(1, 210);
         panel4.Name = "panel4";
         panel4.Size = new Size(460, 65);
         panel4.TabIndex = 11;
         // 
-        // button5
+        // btnCadastroProdutoCancelar
         // 
-        button5.Location = new Point(369, 10);
-        button5.Name = "button5";
-        button5.Size = new Size(85, 45);
-        button5.TabIndex = 6;
-        button5.Text = "Cancelar";
-        button5.UseVisualStyleBackColor = true;
+        btnCadastroProdutoCancelar.Location = new Point(369, 10);
+        btnCadastroProdutoCancelar.Name = "btnCadastroProdutoCancelar";
+        btnCadastroProdutoCancelar.Size = new Size(85, 45);
+        btnCadastroProdutoCancelar.TabIndex = 7;
+        btnCadastroProdutoCancelar.Text = "Cancelar";
+        btnCadastroProdutoCancelar.UseVisualStyleBackColor = true;
+        btnCadastroProdutoCancelar.Click += btnCadastroProdutoCancelar_Click;
         // 
-        // button6
+        // btnCadastroProdutoSalvar
         // 
-        button6.Location = new Point(278, 10);
-        button6.Name = "button6";
-        button6.Size = new Size(85, 45);
-        button6.TabIndex = 5;
-        button6.Text = "Salvar";
-        button6.UseVisualStyleBackColor = true;
-        // 
-        // txtTelefone
-        // 
-        txtTelefone.Location = new Point(10, 118);
-        txtTelefone.Mask = "(99) 0 0000-0000";
-        txtTelefone.Name = "txtTelefone";
-        txtTelefone.Size = new Size(110, 23);
-        txtTelefone.TabIndex = 2;
+        btnCadastroProdutoSalvar.Location = new Point(278, 10);
+        btnCadastroProdutoSalvar.Name = "btnCadastroProdutoSalvar";
+        btnCadastroProdutoSalvar.Size = new Size(85, 45);
+        btnCadastroProdutoSalvar.TabIndex = 6;
+        btnCadastroProdutoSalvar.Text = "Salvar";
+        btnCadastroProdutoSalvar.UseVisualStyleBackColor = true;
+        btnCadastroProdutoSalvar.Click += btnCadastroProdutoSalvar_Click;
         // 
         // panel2
         // 
@@ -282,58 +328,44 @@ partial class frmCadastroProdutos
         btnSalvar.Text = "Salvar";
         btnSalvar.UseVisualStyleBackColor = true;
         // 
-        // txtEmail
+        // txtEstoque
         // 
-        txtEmail.Location = new Point(162, 118);
-        txtEmail.Name = "txtEmail";
-        txtEmail.Size = new Size(247, 23);
-        txtEmail.TabIndex = 3;
+        txtEstoque.Enabled = false;
+        txtEstoque.Location = new Point(178, 168);
+        txtEstoque.Name = "txtEstoque";
+        txtEstoque.Size = new Size(138, 23);
+        txtEstoque.TabIndex = 5;
         // 
         // label5
         // 
         label5.AutoSize = true;
-        label5.Location = new Point(165, 103);
+        label5.Location = new Point(10, 150);
         label5.Name = "label5";
-        label5.Size = new Size(41, 15);
+        label5.Size = new Size(37, 15);
         label5.TabIndex = 8;
-        label5.Text = "E-mail";
-        // 
-        // txtEndereco
-        // 
-        txtEndereco.Location = new Point(10, 166);
-        txtEndereco.Name = "txtEndereco";
-        txtEndereco.Size = new Size(399, 23);
-        txtEndereco.TabIndex = 4;
-        // 
-        // label4
-        // 
-        label4.AutoSize = true;
-        label4.Location = new Point(13, 151);
-        label4.Name = "label4";
-        label4.Size = new Size(56, 15);
-        label4.TabIndex = 6;
-        label4.Text = "Endereço";
+        label5.Text = "Preço";
         // 
         // label3
         // 
         label3.AutoSize = true;
-        label3.Location = new Point(13, 103);
+        label3.Location = new Point(10, 103);
         label3.Name = "label3";
-        label3.Size = new Size(51, 15);
+        label3.Size = new Size(58, 15);
         label3.TabIndex = 4;
-        label3.Text = "Telefone";
+        label3.Text = "Descrição";
         // 
         // txtNome
         // 
         txtNome.Location = new Point(10, 69);
         txtNome.Name = "txtNome";
         txtNome.Size = new Size(399, 23);
-        txtNome.TabIndex = 1;
+        txtNome.TabIndex = 2;
+        txtNome.TextChanged += txtNome_TextChanged;
         // 
         // label2
         // 
         label2.AutoSize = true;
-        label2.Location = new Point(13, 54);
+        label2.Location = new Point(10, 54);
         label2.Name = "label2";
         label2.Size = new Size(40, 15);
         label2.TabIndex = 2;
@@ -351,7 +383,7 @@ partial class frmCadastroProdutos
         // label1
         // 
         label1.AutoSize = true;
-        label1.Location = new Point(13, 11);
+        label1.Location = new Point(10, 11);
         label1.Name = "label1";
         label1.Size = new Size(46, 15);
         label1.TabIndex = 0;
@@ -362,15 +394,15 @@ partial class frmCadastroProdutos
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(476, 308);
-        Controls.Add(tabClientes);
+        Controls.Add(tabProdutos);
         Name = "frmCadastroProdutos";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Cadastro de Produtos";
         Load += frmCadastroProdutos_Load;
-        tabClientes.ResumeLayout(false);
+        tabProdutos.ResumeLayout(false);
         tabConsulta.ResumeLayout(false);
         panel3.ResumeLayout(false);
-        ((System.ComponentModel.ISupportInitialize)dgClientes).EndInit();
+        ((System.ComponentModel.ISupportInitialize)dgProdutos).EndInit();
         panel1.ResumeLayout(false);
         tabCampos.ResumeLayout(false);
         tabCampos.PerformLayout();
@@ -381,34 +413,36 @@ partial class frmCadastroProdutos
 
     #endregion
 
-    private TabControl tabClientes;
+    private TabControl tabProdutos;
     private TabPage tabConsulta;
-    private DataGridView dgClientes;
+    private DataGridView dgProdutos;
     private Panel panel1;
     private Button btnNovo;
     private Button btnSair;
     private Button btnExcluir;
     private Button btnEditar;
     private TabPage tabCampos;
-    private MaskedTextBox txtTelefone;
     private Panel panel2;
     private Button btnCancelar;
     private Button btnSalvar;
-    private TextBox txtEmail;
+    private TextBox txtEstoque;
     private Label label5;
-    private TextBox txtEndereco;
-    private Label label4;
     private Label label3;
     private TextBox txtNome;
     private Label label2;
     private TextBox txtCodigo;
     private Label label1;
     private Panel panel3;
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
+    private Button btnCadastroProdutoNovo;
+    private Button btnCadastroProdutoSair;
+    private Button btnCadastroProdutoExcluir;
+    private Button txtCadastroProdutoEditar;
     private Panel panel4;
-    private Button button5;
-    private Button button6;
+    private Button btnCadastroProdutoCancelar;
+    private Button btnCadastroProdutoSalvar;
+    private TextBox txtDescricao;
+    private Label label4;
+    private TextBox txtPreco;
+    private TextBox txtCodigoDeBarras;
+    private Label label6;
 }

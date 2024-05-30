@@ -188,7 +188,8 @@ public partial class frmCadastroClientes : Form
 
     private void btnCadastroClienteExcluir_Click(object sender, EventArgs e)
     {
-        if (txtCodigo.Text == string.Empty)
+        if (string.IsNullOrEmpty(txtCodigo.Text.Trim()) ||
+            string.IsNullOrWhiteSpace(txtCodigo.Text.Trim()))
         {
             MessageBox.Show("Selecione um cliente para exluir!");
             return;

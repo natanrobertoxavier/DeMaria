@@ -1,4 +1,6 @@
-﻿namespace ControleVendas.utilitarios;
+﻿using System.Globalization;
+
+namespace ControleVendas.utilitarios;
 public static class Utilitarios
 {
     public static void ConverterParaMaiusculas(TextBox textBox)
@@ -16,5 +18,4 @@ public static class Utilitarios
     {
         return telefone.Replace(" ", "").Length == 14;
     }
-
 }

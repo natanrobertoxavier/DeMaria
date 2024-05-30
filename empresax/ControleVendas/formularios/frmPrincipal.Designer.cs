@@ -33,6 +33,7 @@ partial class frmPrincipal
         cadastrarToolStripMenuItem = new ToolStripMenuItem();
         clienteToolStripMenuItem = new ToolStripMenuItem();
         produtosToolStripMenuItem = new ToolStripMenuItem();
+        registrarVendaToolStripMenuItem = new ToolStripMenuItem();
         menuStrip1.SuspendLayout();
         SuspendLayout();
         // 
@@ -47,7 +48,7 @@ partial class frmPrincipal
         // 
         // cadastrosToolStripMenuItem
         // 
-        cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem });
+        cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, registrarVendaToolStripMenuItem });
         cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
         cadastrosToolStripMenuItem.Size = new Size(50, 20);
         cadastrosToolStripMenuItem.Text = "Menu";
@@ -62,16 +63,23 @@ partial class frmPrincipal
         // clienteToolStripMenuItem
         // 
         clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-        clienteToolStripMenuItem.Size = new Size(180, 22);
+        clienteToolStripMenuItem.Size = new Size(122, 22);
         clienteToolStripMenuItem.Text = "Clientes";
         clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
         // 
         // produtosToolStripMenuItem
         // 
         produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-        produtosToolStripMenuItem.Size = new Size(180, 22);
+        produtosToolStripMenuItem.Size = new Size(122, 22);
         produtosToolStripMenuItem.Text = "Produtos";
-        produtosToolStripMenuItem.Click += this.produtosToolStripMenuItem_Click;
+        produtosToolStripMenuItem.Click += produtosToolStripMenuItem_Click;
+        // 
+        // registrarVendaToolStripMenuItem
+        // 
+        registrarVendaToolStripMenuItem.Name = "registrarVendaToolStripMenuItem";
+        registrarVendaToolStripMenuItem.Size = new Size(180, 22);
+        registrarVendaToolStripMenuItem.Text = "Registrar Venda";
+        registrarVendaToolStripMenuItem.Click += registrarVendaToolStripMenuItem_Click;
         // 
         // frmPrincipal
         // 
@@ -95,4 +103,5 @@ partial class frmPrincipal
     private ToolStripMenuItem cadastrarToolStripMenuItem;
     private ToolStripMenuItem clienteToolStripMenuItem;
     private ToolStripMenuItem produtosToolStripMenuItem;
+    private ToolStripMenuItem registrarVendaToolStripMenuItem;
 }
