@@ -10,6 +10,8 @@ public partial class frmPesquisarProduto : Form
     public frmPesquisarProduto()
     {
         InitializeComponent();
+        this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        this.MaximizeBox = false;
     }
     private void BuscarTodosProdutos(ProdutoRepositorio repositorio)
     {

@@ -59,6 +59,7 @@ partial class frmPesquisarCliente
         btnPesquisarProdutoCancelar.TabIndex = 4;
         btnPesquisarProdutoCancelar.Text = "Cancelar";
         btnPesquisarProdutoCancelar.UseVisualStyleBackColor = true;
+        btnPesquisarProdutoCancelar.Click += btnPesquisarProdutoCancelar_Click;
         // 
         // btnPesquisarProdutoConfirmar
         // 

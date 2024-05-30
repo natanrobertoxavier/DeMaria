@@ -14,6 +14,8 @@ public partial class frmRegistrarVenda : Form
     public frmRegistrarVenda()
     {
         InitializeComponent();
+        this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        this.MaximizeBox = false;
     }
 
     private void txtCPFConsulta_Leave(object sender, EventArgs e)
@@ -237,6 +239,12 @@ public partial class frmRegistrarVenda : Form
 
         frmPesquisarCliente.ShowDialog();
 
+        if (DataStore.Produto is null)
+        {
+            txtCPFConsulta.Focus();
+            return;
+        }
+
         AdicionaCliente();
     }
 
@@ -288,11 +296,23 @@ public partial class frmRegistrarVenda : Form
 
     private void btnCancelar_Click(object sender, EventArgs e)
     {
+        DialogResult resultado = MessageBox.Show("Deseja realmente cancelar a venda?",
+            "Confirmação",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning);
+
+        if (resultado == DialogResult.No)
+            return;
+
         LimparCampos();
+
+        txtCPFConsulta.Focus();
     }
 
     private void btnConfirmar_Click(object sender, EventArgs e)
     {
         LimparCampos();
+
+        txtCPFConsulta.Focus();
     }
 }

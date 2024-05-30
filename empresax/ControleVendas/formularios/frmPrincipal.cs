@@ -1,4 +1,5 @@
 using ControleVendas.formularios.cadastros;
+using ControleVendas.formularios.relatorios;
 using ControleVendas.formularios.vendas;
 
 namespace ControleVendas;
@@ -14,19 +15,25 @@ public partial class frmPrincipal : Form
 
     private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        frmCadastroClientes frmCadastroClientes = new frmCadastroClientes();
-        frmCadastroClientes.ShowDialog();
+        using (var frm = new frmCadastroClientes())
+            frm.ShowDialog();
     }
 
     private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        frmCadastroProdutos frmCadastroProdutos = new frmCadastroProdutos();
-        frmCadastroProdutos.ShowDialog();
+        using (var frm = new frmCadastroProdutos())
+            frm.ShowDialog();
     }
 
     private void registrarVendaToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        frmRegistrarVenda frmRegistrarVenda = new frmRegistrarVenda();
-        frmRegistrarVenda.ShowDialog();
+        using (var frm = new frmRegistrarVenda())
+            frm.ShowDialog();
+    }
+
+    private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        using (var frm = new frmRelatorioVendas())
+            frm.ShowDialog();
     }
 }

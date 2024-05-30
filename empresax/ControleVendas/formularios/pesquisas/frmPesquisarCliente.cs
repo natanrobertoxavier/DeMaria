@@ -9,6 +9,8 @@ public partial class frmPesquisarCliente : Form
     public frmPesquisarCliente()
     {
         InitializeComponent();
+        this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        this.MaximizeBox = false;
     }
 
     private void BuscarTodosClientes(ClienteRepositorio repositorio)
@@ -103,5 +105,10 @@ public partial class frmPesquisarCliente : Form
         var repositorio = new ClienteRepositorio();
 
         BuscarTodosClientes(repositorio);
+    }
+
+    private void btnPesquisarProdutoCancelar_Click(object sender, EventArgs e)
+    {
+        this.Close();
     }
 }

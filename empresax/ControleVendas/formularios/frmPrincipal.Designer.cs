@@ -34,6 +34,8 @@ partial class frmPrincipal
         clienteToolStripMenuItem = new ToolStripMenuItem();
         produtosToolStripMenuItem = new ToolStripMenuItem();
         registrarVendaToolStripMenuItem = new ToolStripMenuItem();
+        relatóriosToolStripMenuItem = new ToolStripMenuItem();
+        clientesToolStripMenuItem = new ToolStripMenuItem();
         menuStrip1.SuspendLayout();
         SuspendLayout();
         // 
@@ -48,7 +50,7 @@ partial class frmPrincipal
         // 
         // cadastrosToolStripMenuItem
         // 
-        cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, registrarVendaToolStripMenuItem });
+        cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, registrarVendaToolStripMenuItem, relatóriosToolStripMenuItem });
         cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
         cadastrosToolStripMenuItem.Size = new Size(50, 20);
         cadastrosToolStripMenuItem.Text = "Menu";
@@ -81,6 +83,20 @@ partial class frmPrincipal
         registrarVendaToolStripMenuItem.Text = "Registrar Venda";
         registrarVendaToolStripMenuItem.Click += registrarVendaToolStripMenuItem_Click;
         // 
+        // relatóriosToolStripMenuItem
+        // 
+        relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesToolStripMenuItem });
+        relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
+        relatóriosToolStripMenuItem.Size = new Size(180, 22);
+        relatóriosToolStripMenuItem.Text = "Relatórios";
+        // 
+        // clientesToolStripMenuItem
+        // 
+        clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+        clientesToolStripMenuItem.Size = new Size(180, 22);
+        clientesToolStripMenuItem.Text = "Clientes";
+        clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
+        // 
         // frmPrincipal
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -104,4 +120,6 @@ partial class frmPrincipal
     private ToolStripMenuItem clienteToolStripMenuItem;
     private ToolStripMenuItem produtosToolStripMenuItem;
     private ToolStripMenuItem registrarVendaToolStripMenuItem;
+    private ToolStripMenuItem relatóriosToolStripMenuItem;
+    private ToolStripMenuItem clientesToolStripMenuItem;
 }

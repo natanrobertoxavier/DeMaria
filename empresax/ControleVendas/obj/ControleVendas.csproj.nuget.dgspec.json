@@ -54,13 +54,13 @@
               "target": "Package",
               "version": "[2.1.35, )"
             },
-            "Microsoft.ReportViewer.Windows": {
-              "target": "Package",
-              "version": "[11.0.3452, )"
-            },
             "Npgsql": {
               "target": "Package",
               "version": "[8.0.3, )"
+            },
+            "ReportViewerCore.WinForms": {
+              "target": "Package",
+              "version": "[15.1.19, )"
             }
           },
           "imports": [
