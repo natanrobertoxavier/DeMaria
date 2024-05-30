@@ -2,6 +2,7 @@
 using ControleVendas.model;
 using ControleVendas.repositorio;
 using ControleVendas.utilitarios;
+using Npgsql.Replication;
 using System.Drawing;
 
 namespace ControleVendas.formularios.vendas;
@@ -38,6 +39,8 @@ public partial class frmRegistrarVenda : Form
 
         if (txtCodigoDeBarrasPesquisa.Text.Contains("*"))
         {
+            txtCodigoDeBarrasPesquisa.Text = DataStore.Produto.CodigoDeBarras;
+
             txtQuantidadeProduto.Visible = true;
 
             txtQuantidadeProduto.Focus();
@@ -51,13 +54,14 @@ public partial class frmRegistrarVenda : Form
     private void txtQuantidadeProduto_Leave(object sender, EventArgs e)
     {
         txtQuantidadeProduto.Visible = false;
-        txtQuantidadeProduto.Text = string.Empty;
 
         Quantidade = decimal.TryParse(txtQuantidadeProduto.Text, out decimal qtde) ? qtde : 1.000m;
 
         if (!string.IsNullOrEmpty(txtCodigoDeBarrasPesquisa.Text) ||
             !string.IsNullOrWhiteSpace(txtCodigoDeBarrasPesquisa.Text))
             AdicionarProdutoPesquisadoAoGrid();
+
+        txtQuantidadeProduto.Text = string.Empty;
 
         txtCodigoDeBarrasPesquisa.Text = string.Empty;
 
@@ -71,7 +75,7 @@ public partial class frmRegistrarVenda : Form
         {
             ProdutoRepositorio repositorio = new ProdutoRepositorio();
 
-            DataStore.Produto = repositorio.BuscarProdutoPorCodigoDeBarras(txtCodigoDeBarrasPesquisa.Text);
+            DataStore.Produto = repositorio.BuscarProdutoPorCodigoDeBarras(txtCodigoDeBarrasPesquisa.Text.Replace("*", ""));
         }
 
         txtCodigoDeBarrasPesquisa.Text = string.Empty;
@@ -90,8 +94,6 @@ public partial class frmRegistrarVenda : Form
 
         var produto = DataStore.Produto;
 
-        var quantidade = Quantidade;
-
         lblNomeProdutoPesquisado.Text = produto.Nome;
         lblPrecoUnitario.Text = $"R$ {string.Format("{0:F3}", produto.Preco)}";
 
@@ -99,9 +101,9 @@ public partial class frmRegistrarVenda : Form
         {
             ClienteId = 1,
             CodigoDeBarras = produto.CodigoDeBarras,
-            Quantidade = quantidade,
+            Quantidade = Quantidade,
             ValorUnitario = produto.Preco,
-            ValorTotal = (produto.Preco * quantidade),
+            ValorTotal = (produto.Preco * Quantidade),
             DataVenda = DateTime.Now,
             NomeProduto = produto.Nome,
         };
@@ -182,6 +184,8 @@ public partial class frmRegistrarVenda : Form
         precoTotal.DefaultCellStyle.Format = "F3";
         precoTotal.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         #endregion
+
+        Quantidade = 1.000m;
     }
 
     private void frmRegistrarVenda_Load(object sender, EventArgs e)
@@ -311,8 +315,51 @@ public partial class frmRegistrarVenda : Form
 
     private void btnConfirmar_Click(object sender, EventArgs e)
     {
+        RegistrarVenda();
+
         LimparCampos();
 
         txtCPFConsulta.Focus();
+    }
+
+    private void RegistrarVenda()
+    {
+        VendaRepositorio vendaRepositorio = new VendaRepositorio();
+        
+        var itensDaVenda = (List<Venda>) dgVendas.DataSource;
+
+        var venda = new Venda()
+        {
+            Id = 0,
+            ClienteId = itensDaVenda.Select(o => o.ClienteId).Distinct().FirstOrDefault(),
+            CodigoDeBarras = string.Empty,
+            NomeProduto = string.Empty,
+            Quantidade = itensDaVenda.Sum(o => o.Quantidade),
+            ValorUnitario = 0,
+            ValorTotal = itensDaVenda.Sum(o => o.ValorTotal),
+            DataVenda = DateTime.Now,
+            CodigoDaVenda = lblNumeroPedido.Text,
+        };
+
+        vendaRepositorio.CadastrarVenda(venda);
+
+        foreach (var itemDaVenda in itensDaVenda) 
+        {
+            var itemParaCadastro = new Venda()
+            {
+                Id = 0,
+                ClienteId = 0,
+                CodigoDeBarras = itemDaVenda.CodigoDeBarras,
+                NomeProduto = string.Empty,
+                Quantidade = itemDaVenda.Quantidade,
+                ValorUnitario = itemDaVenda.ValorUnitario,
+                ValorTotal = itemDaVenda.ValorTotal,
+                DataVenda = DateTime.Now,
+                CodigoDaVenda = lblNumeroPedido.Text,
+            };
+
+            vendaRepositorio.CadastrarItensDaVenda(itemParaCadastro);
+        }
+
     }
 }

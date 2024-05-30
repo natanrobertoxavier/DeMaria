@@ -5,29 +5,50 @@ using Npgsql;
 namespace ControleVendas.repositorio;
 public class VendaRepositorio
 {
-    public void Cadastrar(Venda venda)
+    public void CadastrarVenda(Venda venda)
     {
         using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         conexao.Execute(@"INSERT INTO VENDAS (CLIENTEID, 
-                                              CODIGODEBARRAS, 
                                               QUANTIDADE, 
-                                              VALORUNITARIO, 
                                               VALORTOTAL, 
-                                              DATAVENDA)
+                                              DATACADASTRO,
+                                              CODIGODAVENDA)
                                  VALUES (@clienteId, 
-                                         @codigoDeBarras, 
                                          @quantidade, 
-                                         @valorUnitario, 
                                          @valorTotal, 
-                                         @dataVenda);",
+                                         @dataVenda, 
+                                         @codigoDaVenda);",
                 new
                 {
                     clienteId = venda.ClienteId,
+                    quantidade = venda.Quantidade,
+                    valorTotal = venda.ValorTotal,
+                    dataVenda = DateTime.Now,
+                    codigoDaVenda = venda.CodigoDaVenda,
+                }
+        );
+    }
+
+    public void CadastrarItensDaVenda(Venda venda)
+    {
+        using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
+        conexao.Execute(@"INSERT INTO ITENSDAVENDA (CODIGODEBARRAS, 
+                                                    QUANTIDADE, 
+                                                    VALORUNITARIO, 
+                                                    VALORTOTAL,
+                                                    CODIGODAVENDA)
+                                 VALUES (@codigoDeBarras, 
+                                         @quantidade, 
+                                         @valorUnitario, 
+                                         @valorTotal,
+                                         @codigoDaVenda);",
+                new
+                {
                     codigoDeBarras = venda.CodigoDeBarras,
                     quantidade = venda.Quantidade,
                     valorUnitario = venda.ValorUnitario,
                     valorTotal = venda.ValorTotal,
-                    dataVenda = venda.DataVenda,
+                    codigoDaVenda = venda.CodigoDaVenda,
                 }
         );
     }
