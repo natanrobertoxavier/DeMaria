@@ -32,7 +32,11 @@ partial class frmRegistrarVenda
         panel3 = new Panel();
         dgVendas = new DataGridView();
         panel4 = new Panel();
+        btnCancelar = new Button();
+        btnConfirmar = new Button();
         panel2 = new Panel();
+        lblNumeroDoPedidoCaption = new Label();
+        lblNumeroPedido = new Label();
         txtQuantidadeProduto = new TextBox();
         lblPrecoUnitario = new Label();
         lblNomeProdutoPesquisado = new Label();
@@ -46,6 +50,7 @@ partial class frmRegistrarVenda
         panel1.SuspendLayout();
         panel3.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)dgVendas).BeginInit();
+        panel4.SuspendLayout();
         panel2.SuspendLayout();
         SuspendLayout();
         // 
@@ -80,14 +85,38 @@ partial class frmRegistrarVenda
         // 
         // panel4
         // 
+        panel4.Controls.Add(btnCancelar);
+        panel4.Controls.Add(btnConfirmar);
         panel4.Dock = DockStyle.Bottom;
         panel4.Location = new Point(0, 366);
         panel4.Name = "panel4";
         panel4.Size = new Size(654, 100);
         panel4.TabIndex = 2;
         // 
+        // btnCancelar
+        // 
+        btnCancelar.Location = new Point(545, 26);
+        btnCancelar.Name = "btnCancelar";
+        btnCancelar.Size = new Size(85, 45);
+        btnCancelar.TabIndex = 9;
+        btnCancelar.Text = "Cancelar";
+        btnCancelar.UseVisualStyleBackColor = true;
+        btnCancelar.Click += btnCancelar_Click;
+        // 
+        // btnConfirmar
+        // 
+        btnConfirmar.Location = new Point(454, 26);
+        btnConfirmar.Name = "btnConfirmar";
+        btnConfirmar.Size = new Size(85, 45);
+        btnConfirmar.TabIndex = 8;
+        btnConfirmar.Text = "Confirmar";
+        btnConfirmar.UseVisualStyleBackColor = true;
+        btnConfirmar.Click += btnConfirmar_Click;
+        // 
         // panel2
         // 
+        panel2.Controls.Add(lblNumeroDoPedidoCaption);
+        panel2.Controls.Add(lblNumeroPedido);
         panel2.Controls.Add(txtQuantidadeProduto);
         panel2.Controls.Add(lblPrecoUnitario);
         panel2.Controls.Add(lblNomeProdutoPesquisado);
@@ -103,6 +132,25 @@ partial class frmRegistrarVenda
         panel2.Name = "panel2";
         panel2.Size = new Size(654, 109);
         panel2.TabIndex = 0;
+        // 
+        // lblNumeroDoPedidoCaption
+        // 
+        lblNumeroDoPedidoCaption.AutoSize = true;
+        lblNumeroDoPedidoCaption.Location = new Point(518, 47);
+        lblNumeroDoPedidoCaption.Name = "lblNumeroDoPedidoCaption";
+        lblNumeroDoPedidoCaption.Size = new Size(72, 15);
+        lblNumeroDoPedidoCaption.TabIndex = 11;
+        lblNumeroDoPedidoCaption.Text = "Nº da venda";
+        // 
+        // lblNumeroPedido
+        // 
+        lblNumeroPedido.AutoSize = true;
+        lblNumeroPedido.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+        lblNumeroPedido.Location = new Point(518, 71);
+        lblNumeroPedido.Name = "lblNumeroPedido";
+        lblNumeroPedido.Size = new Size(118, 28);
+        lblNumeroPedido.TabIndex = 10;
+        lblNumeroPedido.Text = "Nro Pedido";
         // 
         // txtQuantidadeProduto
         // 
@@ -183,6 +231,7 @@ partial class frmRegistrarVenda
         // txtCPFConsulta
         // 
         txtCPFConsulta.Location = new Point(69, 6);
+        txtCPFConsulta.MaxLength = 14;
         txtCPFConsulta.Name = "txtCPFConsulta";
         txtCPFConsulta.Size = new Size(121, 23);
         txtCPFConsulta.TabIndex = 1;
@@ -212,6 +261,7 @@ partial class frmRegistrarVenda
         panel1.ResumeLayout(false);
         panel3.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)dgVendas).EndInit();
+        panel4.ResumeLayout(false);
         panel2.ResumeLayout(false);
         panel2.PerformLayout();
         ResumeLayout(false);
@@ -234,4 +284,8 @@ partial class frmRegistrarVenda
     private Label lblPrecoUnitario;
     private DataGridView dgVendas;
     private TextBox txtQuantidadeProduto;
+    private Button btnCancelar;
+    private Button btnConfirmar;
+    private Label lblNumeroPedido;
+    private Label lblNumeroDoPedidoCaption;
 }

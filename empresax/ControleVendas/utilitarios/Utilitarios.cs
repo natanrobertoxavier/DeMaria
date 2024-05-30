@@ -1,9 +1,14 @@
 ﻿using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ControleVendas.utilitarios;
 public static class Utilitarios
 {
+    private static HashSet<string> GeradorDeCodigos = new HashSet<string>();
+    private static readonly char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToCharArray();
+
     public static void ConverterParaMaiusculas(TextBox textBox)
     {
         string textoDigitado = textBox.Text;
@@ -44,5 +49,37 @@ public static class Utilitarios
         txtCPF.SelectionStart = cpf.Length;
 
         txtCPF.SelectionLength = 0;
+    }
+
+    public static string GerarCodigoVendas(int length = 9)
+    {
+        string code;
+        do
+        {
+            code = GerarCodigo(length);
+        } while (GeradorDeCodigos.Contains(code));
+
+        GeradorDeCodigos.Add(code);
+        return code;
+    }
+
+    private static string GerarCodigo(int length)
+    {
+        byte[] buffer = Guid.NewGuid().ToByteArray();
+        using (var rng = new RNGCryptoServiceProvider())
+        {
+            rng.GetBytes(buffer);
+        }
+
+        StringBuilder result = new StringBuilder(length);
+        ulong number = BitConverter.ToUInt64(buffer, 0);
+
+        for (int i = 0; i < length; i++)
+        {
+            result.Append(chars[number % (ulong)chars.Length]);
+            number /= (ulong)chars.Length;
+        }
+
+        return result.ToString();
     }
 }
