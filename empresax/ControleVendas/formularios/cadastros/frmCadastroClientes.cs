@@ -1,6 +1,7 @@
 ﻿using ControleVendas.model;
 using ControleVendas.repositorio;
 using ControleVendas.utilitarios;
+using System.Text.RegularExpressions;
 
 namespace ControleVendas.formularios.cadastros;
 public partial class frmCadastroClientes : Form
@@ -21,18 +22,16 @@ public partial class frmCadastroClientes : Form
         dgClientes.Columns.Clear();
 
         #region Personalizacao-Celula-ID
-        DataGridViewTextBoxColumn id = new()
+        DataGridViewTextBoxColumn cpf = new()
         {
-            DataPropertyName = "ID",
-            Name = "ID",
-            HeaderText = "Cod",
-            Width = 40,
+            DataPropertyName = "CPF",
+            Name = "CPF",
+            HeaderText = "CPF",
+            Width = 87,
             ReadOnly = true,
         };
 
-        id.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-        dgClientes.Columns.Add(id);
+        dgClientes.Columns.Add(cpf);
         #endregion
 
         #region Personalizacao-Celula-NOME
@@ -41,7 +40,7 @@ public partial class frmCadastroClientes : Form
             DataPropertyName = "NOME",
             Name = "NOME",
             HeaderText = "Nome",
-            Width = 255,
+            Width = 230,
             ReadOnly = true,
         };
         dgClientes.Columns.Add(nome);
@@ -67,6 +66,7 @@ public partial class frmCadastroClientes : Form
         txtEmail.Text = string.Empty;
         txtEndereco.Text = string.Empty;
         txtTelefone.Text = string.Empty;
+        txtCPF.Text = string.Empty;
     }
 
     private void btnCadastroClienteEditar_Click(object sender, EventArgs e)
@@ -78,6 +78,8 @@ public partial class frmCadastroClientes : Form
         }
 
         tabClientes.SelectedIndex = 1;
+
+        txtNome.Focus();
     }
 
     private void btnCadastroClienteSalvar_Click(object sender, EventArgs e)
@@ -121,6 +123,7 @@ public partial class frmCadastroClientes : Form
 
         var cliente = new Cliente(
             0,
+            txtCPF.Text,
             txtNome.Text,
             txtEndereco.Text,
             txtTelefone.Text,
@@ -132,6 +135,19 @@ public partial class frmCadastroClientes : Form
         if (string.IsNullOrWhiteSpace(txtCodigo.Text.Trim()) ||
             string.IsNullOrEmpty(txtCodigo.Text.Trim()))
         {
+            var cpfClienteJaCadastrado = repositorio.BuscarClientePorCPF(txtCPF.Text);
+
+            if (cpfClienteJaCadastrado is not null)
+            {
+                MessageBox.Show($"CPF {txtCPF.Text} já cadastrado!",
+                    "Operação inválida",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                txtCPF.Focus();
+                return;
+            };
+
             repositorio.Cadastrar(cliente);
         }
         else
@@ -165,15 +181,16 @@ public partial class frmCadastroClientes : Form
 
         LimparCamposCadastro();
 
-        var id = gridCliente.CurrentRow.Cells["ID"]?.Value?.ToString();
+        var cpf = gridCliente.CurrentRow.Cells["CPF"]?.Value?.ToString();
 
-        var cliente = repositorio.BuscarClientePorId(int.TryParse(id, out int _id) ? _id : 0);
+        var cliente = repositorio.BuscarClientePorCPF(cpf);
 
         txtCodigo.Text = cliente.Id.ToString();
         txtNome.Text = cliente.Nome;
         txtEmail.Text = cliente.Email;
         txtEndereco.Text = cliente.Endereco;
         txtTelefone.Text = cliente.Telefone;
+        txtCPF.Text = cliente.CPF;
     }
 
     private void btnCadastroClienteCancelar_Click(object sender, EventArgs e)
@@ -189,7 +206,7 @@ public partial class frmCadastroClientes : Form
 
         tabClientes.SelectedIndex = 1;
 
-        txtNome.Focus();
+        txtCPF.Focus();
     }
 
     private void btnCadastroClienteExcluir_Click(object sender, EventArgs e)
@@ -249,5 +266,22 @@ public partial class frmCadastroClientes : Form
     private void txtEndereco_TextChanged(object sender, EventArgs e)
     {
         Utilitarios.ConverterParaMaiusculas(txtEndereco);
+    }
+
+    private void tabClientes_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        txtCPF.Enabled = (string.IsNullOrEmpty(txtCodigo.Text.Trim()) &&
+                                     string.IsNullOrWhiteSpace(txtCodigo.Text.Trim()));
+    }
+
+    private void tabClientes_SelectedIndexChanged_1(object sender, EventArgs e)
+    {
+        txtCPF.Enabled = (string.IsNullOrEmpty(txtCodigo.Text.Trim()) &&
+                                     string.IsNullOrWhiteSpace(txtCodigo.Text.Trim()));
+    }
+
+    private void txtCPF_TextChanged(object sender, EventArgs e)
+    {
+        Utilitarios.FormatarCPF(txtCPF);
     }
 }

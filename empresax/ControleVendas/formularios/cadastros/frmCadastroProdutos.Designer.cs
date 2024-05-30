@@ -152,7 +152,7 @@ partial class frmCadastroProdutos
         dgProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         dgProdutos.Location = new Point(0, 0);
         dgProdutos.Name = "dgProdutos";
-        dgProdutos.Size = new Size(461, 211);
+        dgProdutos.Size = new Size(462, 204);
         dgProdutos.TabIndex = 1;
         dgProdutos.CellClick += dgProdutos_CellClick;
         // 

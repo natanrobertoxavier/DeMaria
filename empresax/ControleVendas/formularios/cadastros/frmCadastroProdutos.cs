@@ -273,6 +273,6 @@ public partial class frmCadastroProdutos : Form
     private void tabProdutos_SelectedIndexChanged(object sender, EventArgs e)
     {
         txtCodigoDeBarras.Enabled = (string.IsNullOrEmpty(txtCodigo.Text.Trim()) &&
-                                     string.IsNullOrWhiteSpace(txtCodigoDeBarras.Text.Trim()));
+                                     string.IsNullOrWhiteSpace(txtCodigo.Text.Trim()));
     }
 }

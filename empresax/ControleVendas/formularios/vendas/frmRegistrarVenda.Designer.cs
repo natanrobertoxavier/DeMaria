@@ -34,7 +34,7 @@ partial class frmRegistrarVenda
         panel4 = new Panel();
         panel2 = new Panel();
         txtQuantidadeProduto = new TextBox();
-        label3 = new Label();
+        lblPrecoUnitario = new Label();
         lblNomeProdutoPesquisado = new Label();
         btnPesquisarCliente = new Button();
         btnPesquisarProduto = new Button();
@@ -89,7 +89,7 @@ partial class frmRegistrarVenda
         // panel2
         // 
         panel2.Controls.Add(txtQuantidadeProduto);
-        panel2.Controls.Add(label3);
+        panel2.Controls.Add(lblPrecoUnitario);
         panel2.Controls.Add(lblNomeProdutoPesquisado);
         panel2.Controls.Add(btnPesquisarCliente);
         panel2.Controls.Add(btnPesquisarProduto);
@@ -114,14 +114,14 @@ partial class frmRegistrarVenda
         txtQuantidadeProduto.Visible = false;
         txtQuantidadeProduto.Leave += txtQuantidadeProduto_Leave;
         // 
-        // label3
+        // lblPrecoUnitario
         // 
-        label3.AutoSize = true;
-        label3.Location = new Point(135, 82);
-        label3.Name = "label3";
-        label3.Size = new Size(115, 15);
-        label3.TabIndex = 8;
-        label3.Text = "R$ PRECO UNITARIO";
+        lblPrecoUnitario.AutoSize = true;
+        lblPrecoUnitario.Location = new Point(135, 82);
+        lblPrecoUnitario.Name = "lblPrecoUnitario";
+        lblPrecoUnitario.Size = new Size(115, 15);
+        lblPrecoUnitario.TabIndex = 8;
+        lblPrecoUnitario.Text = "R$ PRECO UNITARIO";
         // 
         // lblNomeProdutoPesquisado
         // 
@@ -141,6 +141,7 @@ partial class frmRegistrarVenda
         btnPesquisarCliente.TabIndex = 6;
         btnPesquisarCliente.Text = "Pesquisar";
         btnPesquisarCliente.UseVisualStyleBackColor = true;
+        btnPesquisarCliente.Click += btnPesquisarCliente_Click;
         // 
         // btnPesquisarProduto
         // 
@@ -159,7 +160,7 @@ partial class frmRegistrarVenda
         txtCodigoDeBarrasPesquisa.Name = "txtCodigoDeBarrasPesquisa";
         txtCodigoDeBarrasPesquisa.Size = new Size(121, 23);
         txtCodigoDeBarrasPesquisa.TabIndex = 4;
-        txtCodigoDeBarrasPesquisa.Layout += txtCodigoDeBarrasPesquisa_Layout;
+        txtCodigoDeBarrasPesquisa.Leave += txtCodigoDeBarrasPesquisa_Leave;
         // 
         // label2
         // 
@@ -175,9 +176,9 @@ partial class frmRegistrarVenda
         lblNomeCliente.AutoSize = true;
         lblNomeCliente.Location = new Point(281, 9);
         lblNomeCliente.Name = "lblNomeCliente";
-        lblNomeCliente.Size = new Size(137, 15);
+        lblNomeCliente.Size = new Size(109, 15);
         lblNomeCliente.TabIndex = 2;
-        lblNomeCliente.Text = "NATAN ROBERTO XAVIER";
+        lblNomeCliente.Text = "NOME DO CLIENTE";
         // 
         // txtCPFConsulta
         // 
@@ -185,6 +186,8 @@ partial class frmRegistrarVenda
         txtCPFConsulta.Name = "txtCPFConsulta";
         txtCPFConsulta.Size = new Size(121, 23);
         txtCPFConsulta.TabIndex = 1;
+        txtCPFConsulta.TextAlign = HorizontalAlignment.Right;
+        txtCPFConsulta.TextChanged += txtCPFConsulta_TextChanged;
         txtCPFConsulta.Leave += txtCPFConsulta_Leave;
         // 
         // label1
@@ -228,7 +231,7 @@ partial class frmRegistrarVenda
     private Button btnPesquisarProduto;
     private Button btnPesquisarCliente;
     private Label lblNomeProdutoPesquisado;
-    private Label label3;
+    private Label lblPrecoUnitario;
     private DataGridView dgVendas;
     private TextBox txtQuantidadeProduto;
 }

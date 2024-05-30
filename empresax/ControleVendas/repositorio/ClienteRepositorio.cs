@@ -8,11 +8,12 @@ public class ClienteRepositorio
     public void Cadastrar(Cliente cliente)
     {
         using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
-        conexao.Execute(@"INSERT INTO CLIENTES (NOME,  ENDERECO,  TELEFONE,  EMAIL)
-                                        VALUES (@nome, @endereco, @telefone, @email);",
+        conexao.Execute(@"INSERT INTO CLIENTES (NOME,  CPF,  ENDERECO,  TELEFONE,  EMAIL)
+                                        VALUES (@nome, @cpf, @endereco, @telefone, @email);",
                 new
                 {
                     nome = cliente.Nome,
+                    cpf = cliente.CPF,
                     endereco = cliente.Endereco,
                     telefone = cliente.Telefone,
                     email = cliente.Email,
@@ -54,13 +55,20 @@ public class ClienteRepositorio
     {
         using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         return conexao.QueryFirstOrDefault<Cliente>
-            (@"SELECT ID, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES WHERE ID = @id;", new { id });
+            (@"SELECT ID, CPF, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES WHERE ID = @id;", new { id });
     }
 
     public IEnumerable<Cliente> BuscarTodosClientes()
     {
         using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         return conexao.Query<Cliente>
-            (@"SELECT ID, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES ORDER BY ID ASC");
+            (@"SELECT ID, CPF, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES ORDER BY ID ASC");
+    }
+
+    public Cliente BuscarClientePorCPF(string? cpf)
+    {
+        using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
+        return conexao.QueryFirstOrDefault<Cliente>
+            (@"SELECT ID, CPF, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES WHERE CPF = @cpf;", new { cpf });
     }
 }
