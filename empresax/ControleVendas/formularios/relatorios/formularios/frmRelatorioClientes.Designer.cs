@@ -1,6 +1,6 @@
-﻿namespace ControleVendas.formularios.relatorios;
+﻿namespace ControleVendas.formularios.relatorios.formularios;
 
-partial class frmRelatorioVendas
+partial class frmRelatorioClientes
 {
     /// <summary>
     /// Required designer variable.
@@ -28,32 +28,31 @@ partial class frmRelatorioVendas
     /// </summary>
     private void InitializeComponent()
     {
-        reportRelatorioVendas = new Microsoft.Reporting.WinForms.ReportViewer();
+        reportRelatorioClientes = new Microsoft.Reporting.WinForms.ReportViewer();
         SuspendLayout();
         // 
-        // reportRelatorioVendas
+        // reportRelatorioClientes
         // 
-        reportRelatorioVendas.Dock = DockStyle.Fill;
-        reportRelatorioVendas.Location = new Point(0, 0);
-        reportRelatorioVendas.Name = "ReportViewer";
-        reportRelatorioVendas.ServerReport.BearerToken = null;
-        reportRelatorioVendas.Size = new Size(800, 450);
-        reportRelatorioVendas.TabIndex = 0;
+        reportRelatorioClientes.Dock = DockStyle.Fill;
+        reportRelatorioClientes.Location = new Point(0, 0);
+        reportRelatorioClientes.Name = "ReportViewer";
+        reportRelatorioClientes.ServerReport.BearerToken = null;
+        reportRelatorioClientes.Size = new Size(800, 450);
+        reportRelatorioClientes.TabIndex = 0;
         // 
-        // frmRelatorioVendas
+        // frmRelatorioClientes
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
-        Controls.Add(reportRelatorioVendas);
-        Name = "frmRelatorioVendas";
-        StartPosition = FormStartPosition.CenterScreen;
-        Text = "Relatório de Vendas";
+        Controls.Add(reportRelatorioClientes);
+        Name = "frmRelatorioClientes";
+        Text = "Relatório de Clientes";
         WindowState = FormWindowState.Maximized;
         ResumeLayout(false);
     }
 
     #endregion
 
-    private Microsoft.Reporting.WinForms.ReportViewer reportRelatorioVendas;
+    private Microsoft.Reporting.WinForms.ReportViewer reportRelatorioClientes;
 }

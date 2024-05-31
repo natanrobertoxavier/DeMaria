@@ -35,7 +35,8 @@ partial class frmPrincipal
         produtosToolStripMenuItem = new ToolStripMenuItem();
         registrarVendaToolStripMenuItem = new ToolStripMenuItem();
         relatóriosToolStripMenuItem = new ToolStripMenuItem();
-        clientesToolStripMenuItem = new ToolStripMenuItem();
+        vendasToolStripMenuItem = new ToolStripMenuItem();
+        clientesToolStripMenuItem1 = new ToolStripMenuItem();
         menuStrip1.SuspendLayout();
         SuspendLayout();
         // 
@@ -85,17 +86,24 @@ partial class frmPrincipal
         // 
         // relatóriosToolStripMenuItem
         // 
-        relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesToolStripMenuItem });
+        relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vendasToolStripMenuItem, clientesToolStripMenuItem1 });
         relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
         relatóriosToolStripMenuItem.Size = new Size(180, 22);
         relatóriosToolStripMenuItem.Text = "Relatórios";
         // 
-        // clientesToolStripMenuItem
+        // vendasToolStripMenuItem
         // 
-        clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-        clientesToolStripMenuItem.Size = new Size(180, 22);
-        clientesToolStripMenuItem.Text = "Vendas";
-        clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
+        vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
+        vendasToolStripMenuItem.Size = new Size(180, 22);
+        vendasToolStripMenuItem.Text = "Vendas";
+        vendasToolStripMenuItem.Click += vendasToolStripMenuItem_Click;
+        // 
+        // clientesToolStripMenuItem1
+        // 
+        clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
+        clientesToolStripMenuItem1.Size = new Size(180, 22);
+        clientesToolStripMenuItem1.Text = "Clientes";
+        clientesToolStripMenuItem1.Click += clientesToolStripMenuItem1_Click;
         // 
         // frmPrincipal
         // 
@@ -121,5 +129,6 @@ partial class frmPrincipal
     private ToolStripMenuItem produtosToolStripMenuItem;
     private ToolStripMenuItem registrarVendaToolStripMenuItem;
     private ToolStripMenuItem relatóriosToolStripMenuItem;
-    private ToolStripMenuItem clientesToolStripMenuItem;
+    private ToolStripMenuItem vendasToolStripMenuItem;
+    private ToolStripMenuItem clientesToolStripMenuItem1;
 }

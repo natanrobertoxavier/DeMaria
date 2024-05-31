@@ -175,7 +175,7 @@ partial class frmCadastroClientes
         txtCPF.MaxLength = 14;
         txtCPF.Name = "txtCPF";
         txtCPF.Size = new Size(105, 23);
-        txtCPF.TabIndex = 14;
+        txtCPF.TabIndex = 1;
         txtCPF.TextAlign = HorizontalAlignment.Right;
         txtCPF.TextChanged += txtCPF_TextChanged;
         // 

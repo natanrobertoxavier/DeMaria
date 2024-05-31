@@ -47,6 +47,7 @@ partial class frmRegistrarVenda
         lblNomeCliente = new Label();
         txtCPFConsulta = new TextBox();
         label1 = new Label();
+        btnSair = new Button();
         panel1.SuspendLayout();
         panel3.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)dgVendas).BeginInit();
@@ -85,6 +86,7 @@ partial class frmRegistrarVenda
         // 
         // panel4
         // 
+        panel4.Controls.Add(btnSair);
         panel4.Controls.Add(btnCancelar);
         panel4.Controls.Add(btnConfirmar);
         panel4.Dock = DockStyle.Bottom;
@@ -95,20 +97,20 @@ partial class frmRegistrarVenda
         // 
         // btnCancelar
         // 
-        btnCancelar.Location = new Point(545, 26);
+        btnCancelar.Location = new Point(460, 26);
         btnCancelar.Name = "btnCancelar";
         btnCancelar.Size = new Size(85, 45);
-        btnCancelar.TabIndex = 9;
+        btnCancelar.TabIndex = 7;
         btnCancelar.Text = "Cancelar";
         btnCancelar.UseVisualStyleBackColor = true;
         btnCancelar.Click += btnCancelar_Click;
         // 
         // btnConfirmar
         // 
-        btnConfirmar.Location = new Point(454, 26);
+        btnConfirmar.Location = new Point(369, 26);
         btnConfirmar.Name = "btnConfirmar";
         btnConfirmar.Size = new Size(85, 45);
-        btnConfirmar.TabIndex = 8;
+        btnConfirmar.TabIndex = 6;
         btnConfirmar.Text = "Confirmar";
         btnConfirmar.UseVisualStyleBackColor = true;
         btnConfirmar.Click += btnConfirmar_Click;
@@ -157,7 +159,7 @@ partial class frmRegistrarVenda
         txtQuantidadeProduto.Location = new Point(281, 48);
         txtQuantidadeProduto.Name = "txtQuantidadeProduto";
         txtQuantidadeProduto.Size = new Size(61, 23);
-        txtQuantidadeProduto.TabIndex = 9;
+        txtQuantidadeProduto.TabIndex = 5;
         txtQuantidadeProduto.TextAlign = HorizontalAlignment.Right;
         txtQuantidadeProduto.Visible = false;
         txtQuantidadeProduto.Leave += txtQuantidadeProduto_Leave;
@@ -186,7 +188,7 @@ partial class frmRegistrarVenda
         btnPesquisarCliente.Location = new Point(196, 6);
         btnPesquisarCliente.Name = "btnPesquisarCliente";
         btnPesquisarCliente.Size = new Size(66, 23);
-        btnPesquisarCliente.TabIndex = 6;
+        btnPesquisarCliente.TabIndex = 2;
         btnPesquisarCliente.Text = "Pesquisar";
         btnPesquisarCliente.UseVisualStyleBackColor = true;
         btnPesquisarCliente.Click += btnPesquisarCliente_Click;
@@ -197,7 +199,7 @@ partial class frmRegistrarVenda
         btnPesquisarProduto.Location = new Point(196, 47);
         btnPesquisarProduto.Name = "btnPesquisarProduto";
         btnPesquisarProduto.Size = new Size(66, 23);
-        btnPesquisarProduto.TabIndex = 5;
+        btnPesquisarProduto.TabIndex = 4;
         btnPesquisarProduto.Text = "Pesquisar";
         btnPesquisarProduto.UseVisualStyleBackColor = true;
         btnPesquisarProduto.Click += btnPesquisarProduto_Click;
@@ -207,7 +209,7 @@ partial class frmRegistrarVenda
         txtCodigoDeBarrasPesquisa.Location = new Point(69, 47);
         txtCodigoDeBarrasPesquisa.Name = "txtCodigoDeBarrasPesquisa";
         txtCodigoDeBarrasPesquisa.Size = new Size(121, 23);
-        txtCodigoDeBarrasPesquisa.TabIndex = 4;
+        txtCodigoDeBarrasPesquisa.TabIndex = 3;
         txtCodigoDeBarrasPesquisa.Leave += txtCodigoDeBarrasPesquisa_Leave;
         // 
         // label2
@@ -247,6 +249,16 @@ partial class frmRegistrarVenda
         label1.Size = new Size(47, 15);
         label1.TabIndex = 0;
         label1.Text = "Cliente:";
+        // 
+        // btnSair
+        // 
+        btnSair.Location = new Point(551, 26);
+        btnSair.Name = "btnSair";
+        btnSair.Size = new Size(85, 45);
+        btnSair.TabIndex = 8;
+        btnSair.Text = "Sair";
+        btnSair.UseVisualStyleBackColor = true;
+        btnSair.Click += btnSair_Click;
         // 
         // frmRegistrarVenda
         // 
@@ -288,4 +300,5 @@ partial class frmRegistrarVenda
     private Button btnConfirmar;
     private Label lblNumeroPedido;
     private Label lblNumeroDoPedidoCaption;
+    private Button btnSair;
 }

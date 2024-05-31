@@ -62,7 +62,7 @@ public class ClienteRepositorio
     {
         using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         return conexao.Query<Cliente>
-            (@"SELECT ID, CPF, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES ORDER BY ID ASC");
+            (@"SELECT ID, CPF, NOME, ENDERECO, TELEFONE, EMAIL FROM CLIENTES ORDER BY NOME ASC");
     }
 
     public Cliente BuscarClientePorCPF(string? cpf)

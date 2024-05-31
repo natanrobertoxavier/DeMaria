@@ -255,8 +255,8 @@ public partial class frmRegistrarVenda : Form
     private void AdicionaCliente()
     {
         if (!string.IsNullOrEmpty(txtCPFConsulta.Text) ||
-            !string.IsNullOrWhiteSpace(txtCPFConsulta.Text)) 
-        { 
+            !string.IsNullOrWhiteSpace(txtCPFConsulta.Text))
+        {
             ClienteRepositorio repositorio = new ClienteRepositorio();
 
             DataStore.Cliente = repositorio.BuscarClientePorCPF(txtCPFConsulta.Text);
@@ -315,18 +315,35 @@ public partial class frmRegistrarVenda : Form
 
     private void btnConfirmar_Click(object sender, EventArgs e)
     {
-        RegistrarVenda();
+        if (dgVendas.DataSource is null)
+            return;
 
-        LimparCampos();
+        DialogResult resultado = MessageBox.Show("Deseja realmente fechar a venda?",
+            "Confirmação",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning);
 
-        txtCPFConsulta.Focus();
+        if (resultado == DialogResult.Yes)
+        {
+            MessageBox.Show("Venda realizada com sucesso!",
+                "Sucesso",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+
+            RegistrarVenda();
+
+            LimparCampos();
+
+            txtCPFConsulta.Focus();
+        }
     }
 
     private void RegistrarVenda()
     {
         VendaRepositorio vendaRepositorio = new VendaRepositorio();
-        
-        var itensDaVenda = (List<Venda>) dgVendas.DataSource;
+
+        var itensDaVenda = (List<Venda>)dgVendas.DataSource;
 
         var venda = new Venda()
         {
@@ -343,7 +360,7 @@ public partial class frmRegistrarVenda : Form
 
         vendaRepositorio.CadastrarVenda(venda);
 
-        foreach (var itemDaVenda in itensDaVenda) 
+        foreach (var itemDaVenda in itensDaVenda)
         {
             var itemParaCadastro = new Venda()
             {
@@ -361,5 +378,10 @@ public partial class frmRegistrarVenda : Form
             vendaRepositorio.CadastrarItensDaVenda(itemParaCadastro);
         }
 
+    }
+
+    private void btnSair_Click(object sender, EventArgs e)
+    {
+        this.Close();
     }
 }

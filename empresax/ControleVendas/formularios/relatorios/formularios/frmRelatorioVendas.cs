@@ -1,5 +1,4 @@
 ﻿using ControleVendas.repositorio;
-using Microsoft.Reporting.WinForms;
 
 namespace ControleVendas.formularios.relatorios;
 public partial class frmRelatorioVendas : Form
@@ -12,11 +11,11 @@ public partial class frmRelatorioVendas : Form
 
         var vendas = repositorio.BuscarTodasAsVendas();
 
-        reportRelatorioClientes.LocalReport.ReportEmbeddedResource =
+        reportRelatorioVendas.LocalReport.ReportEmbeddedResource =
             "ControleVendas.formularios.relatorios.relatorios.RelatorioVendas.rdlc";
 
-        reportRelatorioClientes.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dsRelatorioDeVendas", vendas));
+        reportRelatorioVendas.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dsRelatorioDeVendas", vendas));
 
-        reportRelatorioClientes.RefreshReport();
+        reportRelatorioVendas.RefreshReport();
     }
 }

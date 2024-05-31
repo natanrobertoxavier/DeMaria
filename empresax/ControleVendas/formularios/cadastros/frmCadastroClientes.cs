@@ -84,6 +84,19 @@ public partial class frmCadastroClientes : Form
 
     private void btnCadastroClienteSalvar_Click(object sender, EventArgs e)
     {
+        if (string.IsNullOrWhiteSpace(txtCPF.Text.Trim()) ||
+            string.IsNullOrEmpty(txtCPF.Text.Trim()))
+        {
+            MessageBox.Show("O CPF do cliente é obrigatório!",
+                "Operação inválida",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            );
+
+            txtCPF.Focus();
+
+            return;
+        }
         if (string.IsNullOrWhiteSpace(txtNome.Text.Trim()) ||
             string.IsNullOrEmpty(txtNome.Text.Trim()))
         {
