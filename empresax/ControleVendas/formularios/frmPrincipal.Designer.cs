@@ -37,6 +37,7 @@ partial class frmPrincipal
         relatóriosToolStripMenuItem = new ToolStripMenuItem();
         vendasToolStripMenuItem = new ToolStripMenuItem();
         clientesToolStripMenuItem1 = new ToolStripMenuItem();
+        produtosToolStripMenuItem1 = new ToolStripMenuItem();
         menuStrip1.SuspendLayout();
         SuspendLayout();
         // 
@@ -86,7 +87,7 @@ partial class frmPrincipal
         // 
         // relatóriosToolStripMenuItem
         // 
-        relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vendasToolStripMenuItem, clientesToolStripMenuItem1 });
+        relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vendasToolStripMenuItem, clientesToolStripMenuItem1, produtosToolStripMenuItem1 });
         relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
         relatóriosToolStripMenuItem.Size = new Size(180, 22);
         relatóriosToolStripMenuItem.Text = "Relatórios";
@@ -104,6 +105,13 @@ partial class frmPrincipal
         clientesToolStripMenuItem1.Size = new Size(180, 22);
         clientesToolStripMenuItem1.Text = "Clientes";
         clientesToolStripMenuItem1.Click += clientesToolStripMenuItem1_Click;
+        // 
+        // produtosToolStripMenuItem1
+        // 
+        produtosToolStripMenuItem1.Name = "produtosToolStripMenuItem1";
+        produtosToolStripMenuItem1.Size = new Size(180, 22);
+        produtosToolStripMenuItem1.Text = "Produtos";
+        produtosToolStripMenuItem1.Click += produtosToolStripMenuItem1_Click;
         // 
         // frmPrincipal
         // 
@@ -131,4 +139,5 @@ partial class frmPrincipal
     private ToolStripMenuItem relatóriosToolStripMenuItem;
     private ToolStripMenuItem vendasToolStripMenuItem;
     private ToolStripMenuItem clientesToolStripMenuItem1;
+    private ToolStripMenuItem produtosToolStripMenuItem1;
 }

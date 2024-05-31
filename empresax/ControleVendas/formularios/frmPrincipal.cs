@@ -43,4 +43,10 @@ public partial class frmPrincipal : Form
         using (var frm = new frmRelatorioClientes())
             frm.ShowDialog();
     }
+
+    private void produtosToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+        using (var frm = new frmRelatorioProdutos())
+            frm.ShowDialog();
+    }
 }

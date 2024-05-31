@@ -10,11 +10,13 @@
 
   <ItemGroup>
     <None Remove="formularios\relatorios\relatorios\RelatorioClientes.rdlc" />
+    <None Remove="formularios\relatorios\relatorios\RelatorioProdutos.rdlc" />
     <None Remove="formularios\relatorios\relatorios\RelatorioVendas.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="formularios\relatorios\relatorios\RelatorioClientes.rdlc" />
+    <EmbeddedResource Include="formularios\relatorios\relatorios\RelatorioProdutos.rdlc" />
     <EmbeddedResource Include="formularios\relatorios\relatorios\RelatorioVendas.rdlc" />
   </ItemGroup>
 
