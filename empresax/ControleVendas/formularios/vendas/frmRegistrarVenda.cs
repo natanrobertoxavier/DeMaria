@@ -99,7 +99,7 @@ public partial class frmRegistrarVenda : Form
 
         Venda venda = new Venda()
         {
-            ClienteId = 1,
+            ClienteId = DataStore.Cliente.Id,
             CodigoDeBarras = produto.CodigoDeBarras,
             Quantidade = Quantidade,
             ValorUnitario = produto.Preco,
@@ -243,7 +243,7 @@ public partial class frmRegistrarVenda : Form
 
         frmPesquisarCliente.ShowDialog();
 
-        if (DataStore.Produto is null)
+        if (DataStore.Cliente is null)
         {
             txtCPFConsulta.Focus();
             return;

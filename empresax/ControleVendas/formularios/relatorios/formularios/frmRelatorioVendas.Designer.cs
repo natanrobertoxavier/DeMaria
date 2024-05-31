@@ -48,7 +48,8 @@ partial class frmRelatorioVendas
         Controls.Add(reportRelatorioClientes);
         Name = "frmRelatorioVendas";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = "Relatório de Clientes";
+        Text = "Relatório de Vendas";
+        WindowState = FormWindowState.Maximized;
         ResumeLayout(false);
     }
 

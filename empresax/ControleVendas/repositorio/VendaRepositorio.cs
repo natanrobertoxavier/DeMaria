@@ -144,6 +144,7 @@ public class VendaRepositorio
                		,VENDAS.VALORTOTAL		AS VALORTOTAL
                		,VENDAS.DATACADASTRO	AS DATADAVENDA
                FROM VENDAS
-               INNER JOIN CLIENTES ON VENDAS.CLIENTEID = CLIENTES.ID;");
+               INNER JOIN CLIENTES ON VENDAS.CLIENTEID = CLIENTES.ID
+               ORDER BY VENDAS.DATACADASTRO ASC;");
     }
 }

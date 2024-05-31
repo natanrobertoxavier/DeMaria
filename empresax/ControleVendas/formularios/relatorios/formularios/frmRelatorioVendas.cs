@@ -1,4 +1,5 @@
 ﻿using ControleVendas.repositorio;
+using Microsoft.Reporting.WinForms;
 
 namespace ControleVendas.formularios.relatorios;
 public partial class frmRelatorioVendas : Form
