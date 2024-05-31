@@ -87,7 +87,7 @@ public class VendaRepositorio
         );
     }
 
-    public Venda BuscarClientePorId(int id)
+    public Venda BuscarVendaPorId(int id)
     {
         using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
         return conexao.QueryFirstOrDefault<Venda>
@@ -130,5 +130,20 @@ public class VendaRepositorio
                       DATAVENDA 
                 FROM VENDAS 
                 WHERE CODIGODEBARRAS = @codigoDeBarras;", new { codigoDeBarras });
+    }
+
+    public IEnumerable<DadosRelatorioVendas> BuscarTodasAsVendas()
+    {
+        using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
+        return conexao.Query<DadosRelatorioVendas>
+            (@"SELECT 
+               		 VENDAS.CODIGODAVENDA 	AS CODIGODAVENDA
+               	    ,CLIENTES.CPF	 		AS CLIENTECPF
+               		,CLIENTES.NOME 			AS NOMECLIENTE
+               		,VENDAS.QUANTIDADE		AS QUANTIDADEDEPRODUTOS
+               		,VENDAS.VALORTOTAL		AS VALORTOTAL
+               		,VENDAS.DATACADASTRO	AS DATADAVENDA
+               FROM VENDAS
+               INNER JOIN CLIENTES ON VENDAS.CLIENTEID = CLIENTES.ID;");
     }
 }
