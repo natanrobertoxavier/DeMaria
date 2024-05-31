@@ -106,6 +106,7 @@ public partial class frmRegistrarVenda : Form
             ValorTotal = (produto.Preco * Quantidade),
             DataVenda = DateTime.Now,
             NomeProduto = produto.Nome,
+            ProdutoId = produto.Id,
         };
 
         ProdutosGrid.Add(venda);
@@ -341,7 +342,9 @@ public partial class frmRegistrarVenda : Form
 
     private void RegistrarVenda()
     {
-        VendaRepositorio vendaRepositorio = new VendaRepositorio();
+        VendaRepositorio repositorioVenda = new VendaRepositorio();
+
+        ProdutoRepositorio repositorioProduto = new ProdutoRepositorio();
 
         var itensDaVenda = (List<Venda>)dgVendas.DataSource;
 
@@ -358,7 +361,7 @@ public partial class frmRegistrarVenda : Form
             CodigoDaVenda = lblNumeroPedido.Text,
         };
 
-        vendaRepositorio.CadastrarVenda(venda);
+        repositorioVenda.CadastrarVenda(venda);
 
         foreach (var itemDaVenda in itensDaVenda)
         {
@@ -373,9 +376,12 @@ public partial class frmRegistrarVenda : Form
                 ValorTotal = itemDaVenda.ValorTotal,
                 DataVenda = DateTime.Now,
                 CodigoDaVenda = lblNumeroPedido.Text,
+                ProdutoId = itemDaVenda.ProdutoId,
             };
 
-            vendaRepositorio.CadastrarItensDaVenda(itemParaCadastro);
+            repositorioVenda.CadastrarItensDaVenda(itemParaCadastro);
+
+            repositorioProduto.DeduzirEstoque(itemDaVenda.ProdutoId, itemDaVenda.Quantidade);
         }
 
     }

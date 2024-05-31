@@ -36,6 +36,19 @@ public class ProdutoRepositorio
                 }
         );
     }
+    
+    public void DeduzirEstoque(int id, decimal quantidade)
+    {
+        using NpgsqlConnection conexao = (NpgsqlConnection)new DbContext().GetConnection();
+        conexao.Execute(@"UPDATE PRODUTOS SET ESTOQUEATUAL = (SELECT ESTOQUEATUAL FROM PRODUTOS WHERE ID = @id) - @quantidade
+                          WHERE ID = @id;",
+                new
+                {
+                    id = id,
+                    quantidade = quantidade,
+                }
+        );
+    }
 
     public void Apagar(int id)
     {

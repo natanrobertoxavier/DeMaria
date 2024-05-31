@@ -12,7 +12,8 @@ public class Venda
         decimal valorUnitario,
         decimal valorTotal,
         DateTime dataVenda,
-        string codigoDaVenda)
+        string codigoDaVenda,
+        int produtoId)
     {
         Id = id;
         ClienteId = clienteId;
@@ -23,10 +24,12 @@ public class Venda
         ValorTotal = valorTotal;
         DataVenda = dataVenda;
         CodigoDaVenda = codigoDaVenda;
+        ProdutoId = produtoId;
     }
 
     public int Id { get; set; }
     public int ClienteId { get; set; }
+    public int ProdutoId { get; set; }
     public string CodigoDeBarras { get; set; }
     public string CodigoDaVenda { get; set; }
     public string NomeProduto { get; set; }
